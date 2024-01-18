@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+
+* {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.defaultBorderBackgroundShadow {
+    background-color: rgb(239 248 226 / 65%);
+    border: 3px solid rgb(201 222 183 / 90%);
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 10%) 0 4px 12px;
+    transition-duration: .6s;
+}
+
+.gridContainer {
+    margin: 0 .7vw;
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-areas:
+        'header'
+        'add'
+        'overview'
+        'generate';
+}
+
+.gridItem {
+    min-height: 10vh;
+}
+
+.gridItem:nth-child(1) {
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.headingShadow {
+    text-shadow: 2px 2px 5px #ffb6c1,
+    6px 6px 5px #e5a2ad;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: calc(2rem + 5vw);
+    text-align: center;
+    margin-top: 3vh;
+    color: #ffb6c1;
+    letter-spacing: .5rem;
+    transition-duration: 1.6s;
+}
+
+.headingShadow:hover {
+    scale: 1.04;
+    transition-duration: 1.6s;
+    text-shadow: 2px 2px 5px #ffb6c1,
+    6px 6px 5px #e5a2ad,
+    9px 9px 5px #c48b94,
+    12px 12px 6px #ad7983;
+}
+
+.gridItem:nth-child(2) {
+    grid-area: add;
+}
+
+.gridItem:nth-child(3) {
+    grid-area: overview;
+}
+
+.gridItem:nth-child(4) {
+    grid-area: generate;
+}
+
+.gridItem:nth-child(2), .gridItem:nth-child(3) {
+    min-height: 5.5vh;
+    margin: 0 15vw;
+}
+
+.gridItem:nth-child(2):hover, .gridItem:nth-child(3):hover {
+    box-shadow: rgb(0 0 0 / 10%) 0 4px 12px,
+    rgb(0 0 0 / 10%) 0 4px 12px;
+    transition-duration: .6s;
+}
+
+.addFlexbox, .overviewFlexbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 1vw;
+}
+
+.addFlexbox > h4 {
+    margin-right: 5%;
+}
+
+.expandIcon::before {
+    content: url('expandIcon.png');
+}
+
+.expandIcon {
+    margin-top: .6vh;
+    transition-duration: .6s;
+}
+
+.expandIcon:hover {
+    scale: 1.04;
+    transition-duration: .6s;
+}
+
+.addFlowerContainer, .overviewFlowerContainer {
+    transition-duration: 2s;
+    display: none;
+    min-height: 50vh;
+    margin: 0 4vw 5vh;
+}
+
+.addFlowerContainer {
+    grid-template-areas:
+        'fpName fpCategory'
+        'fpStemColor fpPetalColor'
+        'fpStemHeight fpPetalHeight'
+        'fpStemWidth fpPetalWidth'
+        'fpStemThrones fpPetalThrones'
+        'addFlowerButton addFlowerButton';
+}
+
+.addFlowerItem {
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+    border-radius: 10px;
+}
+
+input, select {
+    border: 0;
+    border-bottom: 2px solid black;
+    background-color: rgb(0 0 0 / 0%);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: rgb(177 213 147 / 90%);
+    box-shadow: rgb(0 0 0 / 10%) 0 4px 12px;
+}
+
+input[type="checkbox"] {
+    left: 15px;
+    top: -1vh;
+    z-index: 0;
+    appearance: none;
+}
+
+input[type="checkbox"] + label::after {
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    border: 2px solid rgb(177 213 147 / 90%);
+    display: block;
+    content: "";
+    float: left;
+    margin-top: 0.15vh;
+    margin-right: 5px;
+    z-index: 5;
+    position: relative;
+}
+
+input[type="checkbox"]:checked + label::after {
+    box-shadow: inset 0 0 0 3px #fff;
+    background-color: rgb(177 213 147 / 90%);
+}
+
+input[type="color"] {
+    position: absolute;
+    margin-left: 0.2vw;
+    width: 27px;
+    height: 25px;
+    border: none;
+    border-radius: 20px;
+    background: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 20px;
+}
+
+
+.addFlowerContainer.show, .overviewFlowerContainer.show {
+    display: grid;
+}
+
+.addFlowerItem:nth-child(1) {
+    grid-area: fpName;
+}
+
+.addFlowerItem:nth-child(2) {
+    grid-area: fpCategory;
+}
+
+.addFlowerItem:nth-child(3) {
+    grid-area: fpStemColor;
+}
+
+.addFlowerItem:nth-child(4) {
+    grid-area: fpStemHeight;
+}
+
+.addFlowerItem:nth-child(5) {
+    grid-area: fpStemWidth;
+}
+
+.addFlowerItem:nth-child(6) {
+    grid-area: fpStemThrones;
+}
+
+.addFlowerItem:nth-child(7) {
+    grid-area: fpPetalColor;
+}
+
+.addFlowerItem:nth-child(8) {
+    grid-area: fpPetalHeight;
+}
+
+.addFlowerItem:nth-child(9) {
+    grid-area: fpPetalWidth;
+}
+
+.addFlowerItem:nth-child(10) {
+    grid-area: fpPetalThrones;
+}
+
+.addFlowerItem:nth-child(11) {
+    grid-area: addFlowerButton;
+    border: none;
+    margin-bottom: -3vh;
+}
+
+.centerAddButton {
+    display: flex;
+}
+
+.addButton {
+    padding: 1vh 3vw;
+}
+
+.sortButton {
+    margin-left: 1vw;
+}
+
+.addButton:hover, .sortButton:hover {
+    transition-duration: .6s;
+    scale: 1.005;
+    box-shadow: rgb(0 0 0 / 10%) 0 4px 12px,
+    rgb(0 0 0 / 10%) 0 4px 12px;
+}
+
+.overviewFlowerFlexbox {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.generateButton {
+    display: block;
+    font-size: 1.3rem;
+    margin: 1.5vh auto;
+    padding: 6px 20px;
+}
+
+.generateButton:hover {
+    scale: 1.02;
+    transition-duration: 0.5s;
+    box-shadow: rgb(0 0 0 / 10%) 0 4px 12px,
+    rgb(0 0 0 / 10%) 0 4px 12px;
+}
+
+#sorting {
+    margin-left: 1vw;
+}
+
+@media only screen and (max-width: 1000px) {
+    .addFlexbox > h4 {
+        margin-right: 8%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .addFlexbox > h4 {
+        margin-right: 15%;
+    }
+}
