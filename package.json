@@ -7,7 +7,8 @@
     "lint-fix": "npx eslint --fix src ; exit 0",
     "lint": "npx eslint src",
     "lint-css-fix": "npx stylelint src/*.css --fix ; exit 0",
-    "lint-css": "npx stylelint src/*.css"
+    "lint-css": "npx stylelint src/*.css",
+    "build": ""
   },
   "keywords": [],
   "author": "Marius Wörfel",
