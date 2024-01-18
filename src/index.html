@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Flower Meadow Generator</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='flowerOverview.css'>
+</head>
+
+<body>
+<div class="gridContainer">
+
+    <div class="gridItem">
+        <h2 class="headingShadow">
+            Flower Meadow Generator
+        </h2>
+    </div>
+
+    <div class="gridItem defaultBorderBackgroundShadow">
+
+        <div class="addFlexbox">
+            <h3>Add Flower</h3>
+            <h4 id="showValidation"></h4>
+            <a href="#addFlowerContainer" onclick="toggleAddFlower()" class="expandIcon"></a>
+        </div>
+
+        <div class="addFlowerContainer" id="addFlowerContainer">
+
+            <div class="addFlowerItem">
+                <label>
+                    <input id="addFlowerName" type="text" placeholder="Name"/>
+                </label>
+            </div>
+
+            <div class="addFlowerItem">
+                <label>
+                    <input id="addFlowerCategory" type="text" placeholder="Category"/>
+                </label>
+            </div>
+
+            <div class="addFlowerItem">
+                <label>Stem color
+                    <input id="addFlowerStemColor" type="color"/>
+                </label>
+            </div>
+
+            <div class="addFlowerItem">
+                <label>
+                    <input id="addFlowerStemHeight" type="number" placeholder="Stem height"/>
+                </label>
+            </div>
+
+            <div class="addFlowerItem">
+                <label>
+                    <input id="addFlowerStemWidth" type="number" placeholder="Stem width"/>
+                </label>
+            </div>
+
+            <div class="addFlowerItem">
+                <input id="addFlowerStemThrones" type="checkbox"/>
+                <label for="addFlowerStemThrones">Stem thrones</label>
+            </div>
+
+            <div class="addFlowerItem">
+                <label>Petal color
+                    <input id="addFlowerPetalColor" type="color"/>
+                </label>
+            </div>
+
+            <div class="addFlowerItem">
+                <label>
+                    <input id="addFlowerPetalHeight" type="number" placeholder="Petal height"/>
+                </label>
+            </div>
+
+            <div class="addFlowerItem">
+                <label>
+                    <input id="addFlowerPetalWidth" type="number" placeholder="Petal width"/>
+                </label>
+            </div>
+
+            <div class="addFlowerItem">
+                <input id="addFlowerPetalThrones" type="checkbox"/>
+                <label for="addFlowerPetalThrones">Petal thrones</label>
+            </div>
+
+            <div class="addFlowerItem">
+                <div class="centerAddButton">
+                    <button onclick="addFlower()" class="addButton defaultBorderBackgroundShadow"><b>Add</b></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gridItem defaultBorderBackgroundShadow">
+        <div class="overviewFlexbox">
+            <h3>Overview Flowers</h3>
+            <input type="text" id="searchFlower" placeholder="Search">
+            <div>
+                <input id="reverseSorting" type="checkbox"/>
+                <label for="reverseSorting">Reverse</label>
+                <select id="sorting">
+                    <option value="0">Sort by</option>
+                    <option value="1">Name</option>
+                    <option value="2">Category</option>
+                    <option value="3">Stem color</option>
+                    <option value="4">Stem width</option>
+                    <option value="5">Stem height</option>
+                    <option value="6">Stem thrones</option>
+                    <option value="7">Petal color</option>
+                    <option value="8">Petal width</option>
+                    <option value="9">Petal height</option>
+                    <option value="10">Petal thrones</option>
+                </select>
+                <button class="sortButton defaultBorderBackgroundShadow" onclick="fetchSortedFlowers()"><b>Sort</b></button>
+            </div>
+            <a href="#overviewFlowerContainer" onclick="toggleOverviewFlower()" class="expandIcon"></a>
+        </div>
+
+        <div class="overviewFlowerContainer" id="overviewFlowerContainer">
+
+            <div class="overviewFlowerFlexbox" id="overviewFlowerFlexbox">
+                <!-- insert flowers -->
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gridItem">
+        <button class="generateButton defaultBorderBackgroundShadow" onclick="generateFlowerMeadow()"><b>Generate</b></button>
+    </div>
+
+    <div class="flowerMeadow"></div>
+</div>
+
+<!-- Template to generate  -->
+<template id="flowerTemplate">
+    <div class="flower defaultBorderBackgroundShadow">
+        <div class="previewCircleFlower">
+            <div class="flowerStem">
+                <div class="throneRightUp throne"></div>
+                <div class="throneRightDown throne"></div>
+            </div>
+            <div class="flowerPetal">
+                <div class="throneTop throne"></div>
+            </div>
+        </div>
+        <div class="flowerPropertiesOverview">
+            <!-- 10 flower properties -->
+        </div>
+        <div class="buttonContainer dropTask">
+            <button class="buttonTask delete">
+                <i class="fa-solid fa-circle-xmark" style="font-size:20px;color:red;"></i>
+            </button>
+            <p>1</p>
+            <button class="buttonTask add">
+                <i class="fa-solid fa-plus" style="color:black;"></i>
+            </button>
+            <button class="buttonTask remove">
+                <i class="fa-solid fa-minus" style="color:black;"></i>
+            </button>
+        </div>
+    </div>
+</template>
+
+</body>
+
+<script src="https://kit.fontawesome.com/38c2b2b50e.js" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+
+</html>

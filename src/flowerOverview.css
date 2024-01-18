@@ -1,0 +1,143 @@
+.flower {
+    margin: 2vh 1.8vw;
+}
+
+.flower:hover {
+    scale: 1.01;
+    box-shadow: rgb(0 0 0 / 10%) 0 4px 12px;
+    transition-duration: .6s;
+}
+
+.previewCircleFlower {
+    margin: 2vh 2.4vw;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 10%) 0 2px 6px;
+    display: inline-block;
+    border: 3px solid rgb(93 105 81 / 41%);
+    transition-duration: .6s;
+}
+
+.previewCircleFlower:hover {
+    scale: 1.01;
+    box-shadow: rgb(0 0 0 / 10%) 0 4px 12px;
+    transition-duration: .6s;
+}
+
+.flowerPropertiesOverview {
+    margin: 3vh;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    max-width: 200px;
+}
+
+.flowerPropertiesOverview > h5 {
+    margin: 0.3vh 1vw;
+}
+
+.flower > .buttonContainer {
+    opacity: 0;
+    transition-duration: 0.2s;
+}
+
+.flower:hover > .buttonContainer {
+    opacity: 1;
+    transition-duration: 0.2s;
+}
+
+.flowerProperty {
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 200px;
+    font-size: 11px;
+    display: flex;
+    border-radius: 8px;
+}
+
+.flowerProperty:hover {
+    scale: 1.03;
+    box-shadow: rgb(0 0 0 / 10%) 0 4px 12px;
+    transition-duration: .6s;
+}
+
+.buttonContainer {
+    margin-top: 2vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0.2vw;
+}
+
+.taskContent {
+    word-break: break-word;
+    padding: 0 1vw;
+    margin: 0;
+}
+
+.taskDate {
+    margin-top: 1vh;
+    margin-bottom: 1.5vh;
+}
+
+.buttonTask {
+    opacity: 0.7;
+    transition-duration: 0.2s;
+    background: none;
+    margin: 0.25vh;
+    border: none;
+    border-radius: 15px;
+}
+
+.buttonTask:hover {
+    opacity: 1;
+    transition-duration: 0.2s;
+    transform: translateY(-2px);
+}
+
+.add {
+    float: left;
+    padding: 3px;
+    margin-right: 28%;
+}
+
+.remove {
+    float: left;
+    padding: 0;
+    background: none;
+}
+
+.delete {
+    float: right;
+    padding: 0;
+    background: none;
+    margin-right: 3%;
+    margin-left: 35%
+}
+
+.throne {
+    margin-left: 100%;
+    width: 0;
+    height: 0;
+    border-right: 0.5vw solid transparent;
+}
+
+.throneRightUp {
+    margin-top: 100%;
+    border-left: 0 solid transparent;
+    border-bottom: 0.5vw solid transparent;
+}
+
+.throneRightDown {
+    margin-top: 0;
+    border-left: 0.5vw solid transparent;
+    border-bottom: 0.5vw solid transparent;
+}
+
+.throneTop {
+    margin-top: -20%;
+    margin-left: 10%;
+    border-left: 0.5vw solid transparent;
+    border-bottom: 0.5vw solid transparent;
+}
