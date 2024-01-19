@@ -15,7 +15,7 @@ services:
   backend:
     image: seifkhadraoui/backend
     ports:
-      - "8081:8080"
+      - "8888:8080"
     depends_on:
       - db
     networks:
