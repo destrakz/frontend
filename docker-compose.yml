@@ -1,0 +1,48 @@
+services:
+  frontend:
+    image: seifkhadraoui/frontend
+    ports: 
+      - "8082:80"
+    depends_on:
+      - "backend"
+    volumes:
+      - ./flower-meadow-generator-frontend/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      my-network:
+        aliases:
+          - frontend
+
+  backend:
+    image: seifkhadraoui/backend
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+    networks:
+      my-network:
+        aliases:
+          - backend
+
+  db:
+    image: "postgres:13.1-alpine"
+    restart: always
+    container_name: flower-meadow-generator-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: f-m-generator-user
+      POSTGRES_PASSWORD: test1234
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+      - postgres-init:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      my-network:
+        aliases:
+          - db
+
+networks:
+  my-network:
+
+volumes:
+  postgres-volume:
+  postgres-init:
