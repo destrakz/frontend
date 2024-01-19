@@ -5,21 +5,21 @@ pipeline {
         nodejs "node20"
     }
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhubcredentials')
-        DOCKERHUB_REGISTRY = 'anas129/frontend'
+        DOCKERHUB_CREDENTIALS = credentials('credentials-docker')
+        DOCKERHUB_REGISTRY = 'seifkhadraoui/frontend'
         SCANNER_HOME=tool 'sonar-scanner'
         NEXUS_VERSION = 'nexus3'
         NEXUS_PROTOCOL = 'http'
         NEXUS_URL = 'nexus:8081'
         NEXUS_REPOSITORY = 'frontend-nexus-repo'
-        NEXUS_CREDENTIAL_ID = 'nexus-user-credentials'
+        NEXUS_CREDENTIAL_ID = 'nexus-user-credential'
         NEXUS_CREDENTIALS = credentials("${NEXUS_CREDENTIAL_ID}")
     }
 
     stages {
         stage('git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Anas4444/frontend.git'
+                git branch: 'main', url: 'https://github.com/destrakz/frontend.git'
             }
         }
 
@@ -32,7 +32,6 @@ pipeline {
         stage('Build Package') {
             steps() {
                 sh "npm ci"
-                sh "npm run build"
             }
         }
 
@@ -46,13 +45,16 @@ pipeline {
             steps() {
                 sh 'docker build -t $DOCKERHUB_REGISTRY:$BUILD_NUMBER .'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push $DOCKERHUB_REGISTRY:$BUILD_NUMBER'
+                sh 'docker push $DOCKERHUB_REGISTRY:latest'
             }
         }
 
         stage('Deploy') {
             steps() {
-                sh "echo Frontend deployed"
+                script {
+                    sh "docker compose -p 'devops' down || echo 'project devops not running'"
+                    sh "docker compose -p 'devops' up -d --build"
+                }
             }
         }
     }
