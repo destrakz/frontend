@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    tools {
+    /*tools {
         nodejs "node20"
-    }
+    }*/
     environment {
         DOCKERHUB_CREDENTIALS = credentials('credentials-docker')
         DOCKERHUB_REGISTRY = 'seifkhadraoui/frontend'
@@ -29,11 +29,11 @@ pipeline {
             }
         }
 
-        stage('Build Package') {
+        /*stage('Build Package') {
             steps() {
                 sh "npm ci"
             }
-        }
+        }*/
 
         stage('Publish to Nexus') {
             steps() {
